@@ -1,37 +1,28 @@
 :root {
-  /* Dark-first: Premium, eye-friendly deep navy/off-black (comfort over drama, 2026 corporate standard) */
-  --bg: linear-gradient(135deg, #0a0e1ae6 0%, #111827 50%, #1e293b 100%); /* Deep slate-navy gradient */
-  --text: #f1f5f9; /* Soft near-white */
-  --subtext: #94a3b8; /* Slate 400 */
-
-  /* Accents: Trustworthy navy blue primary, sophisticated teal secondary (professional yet current) */
-  --accent1: #3b82f6; /* Blue 500 - reliable corporate blue */
-  --accent2: #14b8a6; /* Teal 500 - modern depth */
-
-  /* Layers: Subtle glassmorphism for cards/nav (premium feel) */
-  --nav-bg: rgba(15, 23, 42, 0.95); /* Slate 900 95% */
-  --card-bg: rgba(30, 41, 59, 0.90); /* Slate 800 */
+  --bg: linear-gradient(135deg, #0a0e1ae6 0%, #111827 50%, #1e293b 100%);
+  --text: #f1f5f9;
+  --subtext: #94a3b8; 
+  --accent1: #3b82f6; 
+  --accent2: #14b8a6;
+  --nav-bg: rgba(15, 23, 42, 0.95); 
+  --card-bg: rgba(30, 41, 59, 0.90); 
   --section-bg: rgba(15, 23, 42, 0.85);
   --navbar-height: 70px;
-  --color-scheme: light dark; /* Native browser support */
+  --color-scheme: light dark; 
 }
 
-/* LIGHT THEME: Clean, professional minimalism with off-white warmth (Pantone Cloud Dancer vibe) */
+
 body.light-theme {
-  /* Soft off-white gradient (serene, uncluttered corporate look) */
-  --bg: linear-gradient(135deg, #fafafa 0%, #f3f4f6 50%, #ffffff 100%); /* Light gray to Cloud Dancer white */
-  --text: #111827; /* Deep gray-black */
-  --subtext: #4b5563; /* Gray 600 */
-
-  /* Light accents: Crisp corporate blue, subtle teal (high readability) */
-  --accent1: #2563eb; /* Blue 600 - stronger for light mode */
-  --accent2: #0d9488; /* Teal 600 */
-
-  /* Layers: Airy and professional */
+  --bg: linear-gradient(135deg, #fafafa 0%, #f3f4f6 50%, #ffffff 100%); 
+  --text: #111827; 
+  --subtext: #4b5563; 
+  --accent1: #2563eb;
+  --accent2: #0d9488; 
   --nav-bg: rgba(255, 255, 255, 0.95);
   --card-bg: rgba(255, 255, 255, 0.98);
-  --section-bg: rgba(243, 244, 246, 0.9); /* Gray 100 */
+  --section-bg: rgba(243, 244, 246, 0.9);
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -364,7 +355,7 @@ html {
 /* GRID */
 .home-container {
   width: 100%;
-  max-width: 1600px;
+  max-width:1400px;
   margin: 0 auto;
   padding: 0 40px;
   /* LEFT MARGIN = 40px */
