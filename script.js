@@ -289,18 +289,20 @@ nextBtn.addEventListener('click', () => {
 
 
 
-document.getElementById('contactForm').addEventListener('submit', async function (e) {
-  e.preventDefault();
+const form = document.getElementById('contactForm');
+const submitBtn = document.getElementById('submitBtn');
+const btnText = submitBtn.querySelector('.btn-text');
+const formStatus = document.getElementById('formStatus');
 
-  const form = e.target;
-  const submitBtn = document.getElementById('submitBtn');
-  const btnText = submitBtn.querySelector('.btn-text');
-  const formStatus = document.getElementById('formStatus');
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
   submitBtn.disabled = true;
   btnText.textContent = 'Sending...';
+  formStatus.textContent = '⏳ Sending your message...';
+  formStatus.className = 'form-status loading';
 
-  const formData = {
+  const data = {
     name: document.getElementById('name').value,
     email: document.getElementById('email').value,
     subject: document.getElementById('subject').value,
@@ -308,28 +310,46 @@ document.getElementById('contactForm').addEventListener('submit', async function
   };
 
   try {
-    const response = await fetch('https://sorathiya-dhruvin-portfolio.vercel.app/api/send-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData)
-    });
+    const response = await fetch(
+      'https://sorathiya-dhruvin-portfolio.vercel.app/api/send-email',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      }
+    );
 
     const result = await response.json();
 
-    if (response.ok) {
-      formStatus.textContent = '✓ Message sent successfully!';
-      formStatus.className = 'form-status success';
-      form.reset();
-    } else {
-      throw new Error(result.message);
-    }
-  } catch (error) {
+    if (!response.ok) throw new Error(result.message);
+
+    formStatus.textContent = '✓ Message sent successfully!';
+    formStatus.className = 'form-status success';
+    form.reset();
+
+    setTimeout(() => {
+      formStatus.textContent = '';
+      formStatus.className = 'form-status';
+    }, 5000);
+
+  } catch (err) {
     formStatus.textContent = '✗ Failed to send. Please try again.';
     formStatus.className = 'form-status error';
+    console.error(err);
+
+    setTimeout(() => {
+      formStatus.textContent = '';
+      formStatus.className = 'form-status';
+    }, 5000);
   } finally {
     submitBtn.disabled = false;
     btnText.textContent = 'Send Message';
   }
+});
+
+form.addEventListener('input', () => {
+  formStatus.textContent = '';
+  formStatus.className = 'form-status';
 });
 
 
