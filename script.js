@@ -299,7 +299,7 @@ form.addEventListener('submit', async (e) => {
 
   submitBtn.disabled = true;
   btnText.textContent = 'Sending...';
-  formStatus.textContent = '⏳ Sending your message...';
+  formStatus.textContent = 'Sending your message...';
   formStatus.className = 'form-status loading';
 
   const data = {
