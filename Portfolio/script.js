@@ -308,7 +308,7 @@ document.getElementById('contactForm').addEventListener('submit', async function
   };
 
   try {
-    const response = await fetch('https://contactform-backend-flax.vercel.app/api/send-email', {
+    const response = await fetch('https://sorathiya-dhruvin.vercel.app/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
