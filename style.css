@@ -171,7 +171,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
- 
+
 }
 
 .nav-left {
@@ -2036,8 +2036,8 @@ h1 {
     flex-direction: column;
     align-items: flex-start;
     gap: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
     margin-top: 0;
   }
 
@@ -2058,8 +2058,8 @@ h1 {
   .left-content {
     order: 1;
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     align-items: flex-start;
     text-align: left;
   }
@@ -2390,8 +2390,8 @@ h1 {
   }
 
   .home-container {
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
   /* Navigation */
@@ -2399,11 +2399,17 @@ h1 {
     display: none;
   }
 
+  .abouts-grid{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   /* Form Status */
   .form-status {
     font-size: 0.85rem;
     padding: 8px 12px;
   }
+
 }
 
 /* ============================= EXTRA SMALL MOBILE (max-width: 412px) ============================= */
