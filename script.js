@@ -1,10 +1,3 @@
-// window.addEventListener("load",()=>{
-//     const loader=document.getElementById("loadingScreen");
-//     setTimeout(() =>{
-//             loader.classList.add("hidden");
-//     },4000);
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
   const messages = ["Loading...", "Loading...", "Please Wait...", "Welcome!"];
   let index = 0;
@@ -20,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         loadingScreen.style.display = 'none';
         homePage.style.display = 'block';
-        document.querySelector('.nav').style.display = 'flex';
+        document.querySelector('.navbar').style.display = 'flex';
       }, 500);
     }
     index++;
@@ -43,6 +36,7 @@ themeToggle.addEventListener("click", () => {
 });
 
 const overlay = document.getElementById("overlay");
+
 
 hamburger.addEventListener("click", () => {
   mobileMenu.style.right = "0";
@@ -148,11 +142,29 @@ window.addEventListener("scroll", () => {
   });
 });
 
+// ======================== ANIMATED PROGRESS BARS ========================
 document.addEventListener("DOMContentLoaded", () => {
   const skillsSection = document.getElementById("Skills");
   const progressBars = document.querySelectorAll(".progress");
 
   let hasAnimated = false;
+
+  // Function to animate percentage text from 0 to target
+  function animatePercentage(element, target, duration) {
+    const percentElement = element.closest('.skill').querySelector('.skill-percentage');
+    let start = 0;
+    const increment = target / (duration / 16); // 60fps
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        percentElement.textContent = `${target}%`;
+        clearInterval(timer);
+      } else {
+        percentElement.textContent = `${Math.floor(start)}%`;
+      }
+    }, 16);
+  }
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -162,7 +174,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
           progressBars.forEach((bar, index) => {
             setTimeout(() => {
-              bar.style.width = bar.dataset.width;
+              const targetPercent = parseInt(bar.dataset.percent);
+
+              // Animate the bar width
+              bar.style.width = `${targetPercent}%`;
+
+              // Animate the percentage text
+              animatePercentage(bar, targetPercent, 1500);
             }, index * 200); // stagger animation
           });
         }
@@ -177,16 +195,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+
 const track = document.querySelector('.track');
 const cards = document.querySelectorAll('.img-card');
 const dotsContainer = document.getElementById('sliderDots');
 
 let index = 0;
-let auto;
+let auto; 
 
-/* Slides per view */
+
 function slidesPerView() {
   return window.innerWidth <= 768 ? 1 : 3;
+}
+function isDesktop() {
+  return window.innerWidth > 768;
 }
 
 /* Create dots */
@@ -201,14 +223,14 @@ function createDots() {
     dot.addEventListener('click', () => {
       index = i;
       updateSlider();
-      resetAuto();
+      if (isDesktop()) resetAuto(); 
     });
 
     dotsContainer.appendChild(dot);
   }
 }
 
-/* Update slider + dots */
+
 function updateSlider() {
   const perView = slidesPerView();
   track.style.transform = `translateX(-${index * (100 / perView)}%)`;
@@ -218,34 +240,64 @@ function updateSlider() {
   });
 }
 
-/* Auto slide */
+
 function startAuto() {
+  if (!isDesktop()) return; 
+
   auto = setInterval(() => {
     const maxIndex = cards.length - slidesPerView();
     index = index >= maxIndex ? 0 : index + 1;
     updateSlider();
-  }, 2500);
+  }, 3000); 
 }
 
 function resetAuto() {
+  if (!isDesktop()) return; 
   clearInterval(auto);
   startAuto();
 }
 
-/* Resize fix */
+
 window.addEventListener('resize', () => {
+  const wasDesktop = auto !== undefined;
+  const nowDesktop = isDesktop();
+
   index = 0;
   createDots();
   updateSlider();
-  resetAuto();
+
+  if (nowDesktop && !wasDesktop) {
+    const autoSlider = document.querySelector('.auto-slider');
+    if (autoSlider) autoSlider.scrollLeft = 0; 
+    startAuto();
+  } else if (!nowDesktop && wasDesktop) {
+    clearInterval(auto);
+    auto = undefined;
+  } else if (nowDesktop) {
+    const autoSlider = document.querySelector('.auto-slider'); 
+    if (autoSlider) autoSlider.scrollLeft = 0;
+    resetAuto();
+  }
+
+  if (!nowDesktop && typeof window.updateMobileProgress === 'function') {
+    window.updateMobileProgress();
+  }
 });
 
-/* INIT */
+
 createDots();
 updateSlider();
-startAuto();
 
-/* Modal (unchanged) */
+const autoSliderInit = document.querySelector('.auto-slider');
+if (autoSliderInit) {
+  autoSliderInit.scrollLeft = 0;
+}
+
+if (isDesktop()) {
+  startAuto(); 
+}
+
+
 function openImage(src) {
   document.getElementById('modalImg').src = src;
   document.getElementById('imgModal').style.display = 'flex';
@@ -255,8 +307,8 @@ function closeImage() {
   document.getElementById('imgModal').style.display = 'none';
 }
 
-// Pause auto slide on hover
-if (window.innerWidth > 768) {
+
+if (isDesktop()) {
   cards.forEach(card => {
     card.addEventListener('mouseenter', () => {
       clearInterval(auto);
@@ -272,20 +324,160 @@ if (window.innerWidth > 768) {
 const prevBtn = document.querySelector('.nav-btn.prev');
 const nextBtn = document.querySelector('.nav-btn.next');
 
-prevBtn.addEventListener('click', () => {
-  const perView = slidesPerView();
-  index = index <= 0 ? cards.length - perView : index - 1;
-  updateSlider();
-  resetAuto();
-});
+if (prevBtn && nextBtn) {
+  prevBtn.addEventListener('click', () => {
+    const perView = slidesPerView();
+    index = index <= 0 ? cards.length - perView : index - 1;
+    updateSlider();
+    if (isDesktop()) resetAuto(); 
+  });
 
-nextBtn.addEventListener('click', () => {
-  const perView = slidesPerView();
-  index = index >= cards.length - perView ? 0 : index + 1;
-  updateSlider();
-  resetAuto();
-});
+  nextBtn.addEventListener('click', () => {
+    const perView = slidesPerView();
+    index = index >= cards.length - perView ? 0 : index + 1;
+    updateSlider();
+    if (isDesktop()) resetAuto(); 
+  });
+}
 
+
+
+(function initMobileProgressLine() {
+
+  const autoSlider = document.querySelector('.auto-slider');
+  const progressThumb = document.getElementById('mobileProgressThumb');
+  const progressBar = document.querySelector('.mobile-progress-bar');
+  const imgCards = document.querySelectorAll('.auto-slider .img-card');
+
+  if (!autoSlider || !progressThumb || !progressBar || imgCards.length === 0) return;
+
+  let isDragging = false;
+  const totalImages = imgCards.length;
+
+  function getImageWidth() {
+    return autoSlider.clientWidth;
+  }
+  function getMaxScroll() {
+    return autoSlider.scrollWidth - autoSlider.clientWidth;
+  }
+
+  function getCurrentIndex() {
+    const imageWidth = getImageWidth();
+    if (imageWidth === 0) return 0;
+    return Math.round(autoSlider.scrollLeft / imageWidth);
+  }
+
+  function scrollToIndex(idx) {
+    const clampedIndex = Math.max(0, Math.min(idx, totalImages - 1));
+    const targetScroll = clampedIndex * getImageWidth();
+    autoSlider.scrollTo({ left: targetScroll, behavior: 'smooth' });
+  }
+
+  function updateYellowLine() {
+    if (isDesktop()) return;
+
+    const scrollLeft = autoSlider.scrollLeft;
+    const maxScroll = getMaxScroll();
+    if (maxScroll <= 0) return;
+
+    const scrollPercent = scrollLeft / maxScroll;
+
+    const thumbLeft = scrollPercent * 85;
+    progressThumb.style.left = `${thumbLeft}%`;
+  }
+
+  window.updateMobileProgress = updateYellowLine;
+  function updateScrollFromDrag(clientX) {
+    if (isDesktop()) return;
+
+    const barRect = progressBar.getBoundingClientRect();
+    const barWidth = barRect.width;
+    const thumbWidth = barWidth * 0.15;
+    const halfThumb = thumbWidth / 2;
+
+    const relativeX = clientX - barRect.left;
+    const clampedX = Math.max(halfThumb, Math.min(relativeX, barWidth - halfThumb));
+
+    const scrollPercent = (clampedX - halfThumb) / (barWidth - thumbWidth);
+    const maxScroll = getMaxScroll();
+    autoSlider.scrollLeft = scrollPercent * maxScroll;
+  }
+
+ 
+  autoSlider.addEventListener('scroll', () => {
+    if (!isDragging) {
+      requestAnimationFrame(updateYellowLine);
+    }
+  });
+
+  function handleDragStart(e) {
+    if (isDesktop()) return;
+    isDragging = true;
+    progressThumb.classList.add('dragging');
+
+    progressThumb.style.transition = 'none';
+
+    autoSlider.style.scrollSnapType = 'none';
+    autoSlider.style.scrollBehavior = 'auto';
+
+    e.preventDefault();
+  }
+
+  progressThumb.addEventListener('touchstart', handleDragStart, { passive: false });
+  progressThumb.addEventListener('mousedown', handleDragStart);
+
+  let rafId = null;
+
+  function onDragMove(clientX) {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      updateScrollFromDrag(clientX);
+      updateYellowLine();
+    });
+  }
+
+  document.addEventListener('touchmove', (e) => {
+    if (!isDragging || isDesktop()) return;
+    onDragMove(e.touches[0].clientX);
+  }, { passive: true });
+
+  document.addEventListener('mousemove', (e) => {
+    if (!isDragging || isDesktop()) return;
+    onDragMove(e.clientX);
+  });
+
+  function handleDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    progressThumb.classList.remove('dragging');
+
+    if (rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+
+    autoSlider.style.scrollSnapType = 'x mandatory';
+    autoSlider.style.scrollBehavior = 'smooth';
+
+    progressThumb.style.transition = '';
+    scrollToIndex(getCurrentIndex());
+  }
+
+  document.addEventListener('touchend', handleDragEnd);
+  document.addEventListener('mouseup', handleDragEnd);
+
+  progressBar.addEventListener('click', (e) => {
+    if (isDesktop() || isDragging) return;
+    if (e.target === progressThumb) return;
+
+    const barRect = progressBar.getBoundingClientRect();
+    const clickPercent = (e.clientX - barRect.left) / barRect.width;
+    const targetIndex = Math.round(clickPercent * (totalImages - 1));
+    scrollToIndex(targetIndex);
+  });
+
+  updateYellowLine();
+})();
 
 
 
@@ -406,63 +598,34 @@ modal.addEventListener("click", e => {
 
 
 
-// const scrollBtn = document.getElementById("scrollTopBtn");
-// const aboutSection = document.getElementById("About");
-
-// let hideTimeout;
-// let hasShown = false; // prevent continuous retrigger
-
-// window.addEventListener("scroll", () => {
-//   const aboutTop = aboutSection.offsetTop;
-//   const scrollPos = window.scrollY + window.innerHeight / 2;
-
-//   // When user reaches About OR scrolls past it
-//   if (scrollPos >= aboutTop && !hasShown) {
-//     scrollBtn.classList.add("show");
-//     hasShown = true;
-
-//     clearTimeout(hideTimeout);
-
-//     hideTimeout = setTimeout(() => {
-//       scrollBtn.classList.remove("show");
-//     }, 3000);
-//   }
-
-//   // Reset when user scrolls back above About
-//   if (scrollPos < aboutTop) {
-//     hasShown = false;
-//     scrollBtn.classList.remove("show");
-//     clearTimeout(hideTimeout);
-//   }
-// });
-
-// scrollBtn.addEventListener("click", () => {
-//   window.scrollTo({
-//     top: 0,
-//     behavior: "smooth"
-//   });
-// });
-
 const scrollBtn = document.getElementById("scrollTopBtn");
 const aboutSection = document.getElementById("About");
 
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  const aboutTop = aboutSection.offsetTop;
+let hideTimeout;
 
-  // Home section → hide
-  if (scrollY < aboutTop) {
-    scrollBtn.classList.remove("show");
-  }
-  // About & after → permanently show
-  else {
+window.addEventListener("scroll", () => {
+  const aboutTop = aboutSection.offsetTop;
+  const scrollPos = window.scrollY + window.innerHeight / 2;
+
+  if (scrollPos >= aboutTop) {
     scrollBtn.classList.add("show");
+
+    clearTimeout(hideTimeout);
+
+    hideTimeout = setTimeout(() => {
+      scrollBtn.classList.remove("show");
+    }, 3000);
+  } else {
+    scrollBtn.classList.remove("show");
+    clearTimeout(hideTimeout);
   }
 });
 
 scrollBtn.addEventListener("click", () => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth",
+    behavior: "smooth"
   });
 });
+
+
