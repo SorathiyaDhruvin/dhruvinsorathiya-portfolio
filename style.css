@@ -47,7 +47,7 @@ body {
   transition: background 1.1s ease;
   position: relative;
   overscroll-behavior: none;
- 
+
 }
 
 html {
@@ -150,21 +150,54 @@ body {
 /* ============================= NAVBAR ============================= */
 
 .navbar {
-  max-width: 1600px;
+  width: 100%;
   height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
   background: var(--bg);
   backdrop-filter: blur(20px);
   position: fixed;
   top: 0;
-  left: 50%;
+  left: 0;
+  right: 0;
   z-index: 999;
-  transform-origin: center;
-  transform: translateX(-50%);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.navbar-content {
   width: 100%;
+  max-width: 1600px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+ 
+}
+
+.nav-left {
+  display: flex;
+  justify-content: flex-start;
+  z-index: 2;
+}
+
+.nav-center {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-30%);
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.nav-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  z-index: 2;
 }
 
 .logo {
@@ -176,7 +209,6 @@ body {
   transition: transform 0.3s ease;
   text-decoration: none;
   font-size: xx-large;
-  margin-left: 20px;
 }
 
 .gradient-text {
@@ -209,18 +241,11 @@ body {
   }
 }
 
-.nav-center {
-  flex: 1;
-  display: flex;
-  justify-content: flex-end;
-}
-
 /** Menu **/
 .menu {
   list-style: none;
   display: flex;
   gap: 0.5rem;
-  padding-right: 4rem;
 }
 
 .menu a {
@@ -230,10 +255,13 @@ body {
   border-radius: 7px;
   padding: 6px 15px;
   transition: ease .5s;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
 }
 
 .menu i {
-  margin-right: 8px;
+  margin-right: 6px;
 }
 
 .menu a:hover,
