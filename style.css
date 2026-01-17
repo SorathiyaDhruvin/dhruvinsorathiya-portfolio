@@ -492,7 +492,7 @@ h1 {
 }
 
 .hero-wrapper h2 {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 400;
   color: var(--text);
   display: flex;
@@ -509,7 +509,7 @@ h1 {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
 }
 
 /* type wrapper blinkcursor */
@@ -2096,7 +2096,7 @@ h1 {
   }
 
   .typed-text {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
   .description {
@@ -2367,7 +2367,7 @@ h1 {
   }
 
   .typed-text {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
 
   .description {
