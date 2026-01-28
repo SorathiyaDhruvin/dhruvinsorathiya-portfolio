@@ -1871,6 +1871,10 @@ h1 {
 
 /* ============================= DESKTOP (1025px - 1299px) ============================= */
 @media (min-width: 1025px) and (max-width: 1299px) {
+   .navbar-content{
+    padding:0 15px;
+  }
+  
   .home {
     padding-top: calc(var(--navbar-height) + 10px);
   }
@@ -1887,6 +1891,10 @@ h1 {
 
 /* ============================= SMALL DESKTOP (1025px - 1250px) ============================= */
 @media (min-width: 1025px) and (max-width: 1250px) {
+   .navbar-content{
+    padding:0 15px;
+  }
+
   .menu {
     display: none;
   }
@@ -1906,6 +1914,9 @@ h1 {
 
 /* ============================= LARGE TABLET (901px - 1024px) ============================= */
 @media (min-width: 901px) and (max-width: 1024px) {
+   .navbar-content{
+    padding:0 15px;
+  }
   .home {
     padding-top: calc(var(--navbar-height) + 30px);
   }
@@ -1944,6 +1955,10 @@ h1 {
 
 /* ============================= TABLET (769px - 900px) ============================= */
 @media (min-width: 769px) and (max-width: 900px) {
+   .navbar-content{
+    padding:0 15px;
+  }
+
   .home {
     padding-top: calc(var(--navbar-height) + 35px);
     min-height: auto;
@@ -2035,6 +2050,10 @@ h1 {
 
 /* ============================= MOBILE (max-width: 768px) ============================= */
 @media (max-width: 768px) {
+
+   .navbar-content{
+    padding:0 15px;
+  }
 
   /* Home Section */
   .home {
@@ -2344,6 +2363,9 @@ h1 {
   .projects-grid .project-card {
     flex: 0 1 100%;
   }
+   .navbar-content{
+    padding:0 15px;
+  }
 }
 
 /* ============================= SMALL MOBILE (max-width: 600px) ============================= */
@@ -2359,6 +2381,10 @@ h1 {
 
   .footer-socials i {
     font-size: 18px;
+  }
+
+   .navbar-content{
+    padding:0 15px;
   }
 }
 
@@ -2422,6 +2448,9 @@ h1 {
     padding: 8px 12px;
   }
 
+  .navbar-content{
+    padding:0 15px;
+  }
 }
 
 /* ============================= EXTRA SMALL MOBILE (max-width: 412px) ============================= */
