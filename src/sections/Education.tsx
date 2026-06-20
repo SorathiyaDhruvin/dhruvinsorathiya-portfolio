@@ -6,7 +6,7 @@ import { education } from "../data"
 export default function Education() {
   return (
     <section id="education" className="section-pad mx-auto max-w-7xl">
-      <SectionHeading label="// EDUCATION" title="Academic" />
+      <SectionHeading label="// EDUCATION" title="Academic Journey" />
 
       <div className="mt-14 space-y-5">
         {education.map((edu, i) => (

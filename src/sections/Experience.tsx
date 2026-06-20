@@ -7,7 +7,7 @@ export default function Experience() {
   return (
     <section id="experience" className="section-pad bg-navy-deep/40">
       <div className="mx-auto max-w-7xl">
-        <SectionHeading label="// EXPERIENCE" title="Work Journey" />
+        <SectionHeading label="// EXPERIENCE" title="Work Experience" />
 
         <div className="relative mt-14 pl-8">
           <div className="absolute left-2 top-2 bottom-2 w-0.5 bg-gradient-to-b from-ice via-navy-border to-transparent" />

@@ -48,33 +48,33 @@ export const whatIDo = [
 ]
 
 export const skillGroups = [
-  { category: "Programming Languages", items: ["Java", "C++", "C", "SQL"] },
-  { category: "Web Development", items: ["Node.js", "HTML5", "CSS3"] },
-  { category: "Backend & Database", items: ["JavaScript", "MongoDB", "NodeJS", "Firebase"] },
+  { category: "Programming Languages", items: ["Java", "C++", "C", "Kotlin"] },
+  { category: "Web Development", items: ["HTML5", "CSS3", "JavaScript", "React.js"] },
+  { category: "Backend & Database", items: ["Node.js", "Express.js", "MongoDB", "Firebase", "JSON"] },
   { category: "Tools & Platforms", items: ["AWS", "Git", "GitHub", "Render", "Vercel", "Linux", "VS Code"] },
 ]
 
 export const projects = [
   {
-    title: "My Portfolio",
-    category: "Web",
+    title: "360 Indoor Campus Navigation",
+    category: "Website",
     description:
-      "A professional, responsive portfolio showcasing projects, skills, and experience with smooth animations and an interactive user interface.",
-    tech: ["HTML", "CSS", "JavaScript", "Node.js", "Vite", "Tailwind CSS"],
+      "An interactive 360° campus navigation platform featuring a virtual 3D campus tour, interactive indoor maps, seamless 360° transitions between buildings, and a modern, responsive interface built with HTML, CSS, and JavaScript.",
+    tech: ["HTML", "CSS", "JavaScript","JSON"],
     tags: ["Web", "Full Stack", "Portfolio"],
-    live: "https://dhruvinsorathiya-portfolio.vercel.app/",
-    repo: "https://github.com/SorathiyaDhruvin",
-    image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+    live: "https://indoor-campus-navigation.vercel.app/",
+    repo: "https://github.com/SorathiyaDhruvin/test",
+    image: "dist/Indoor Campus Navigation.png",
   },
   {
-    title: "Quote Android App",
-    category: "Android",
+    title: "AI Lead Automation Software",
+    category: "Web App",
     description:
-      "A modern quote application with a creative splash and loading screen, featuring inspirational quotes displayed in elegant cards with smooth navigation and copy-share functionality.",
-    tech: ["Kotlin", "Android Studio", "UI/UX", "Copy & Share"],
-    tags: ["Android", "Kotlin", "UI/UX"],
-    live: "https://github.com/SorathiyaDhruvin/Random-Quote-Generator",
-    repo: "https://github.com/SorathiyaDhruvin/Random-Quote-Generator",
+      "An AI-powered lead automation platform that helps businesses manage, score, and convert leads using intelligent insights and automated workflows.",
+    tech: ["React", "Express", "PostgreSQL", "OpenAI API", "Tailwind CSS"],
+    tags: ["Web App", "Full Stack", "AI", "SaaS"],
+    live: "https://AI-Lead-Automation-Software.replit.app",
+    repo: "https://github.com/SorathiyaDhruvin/AI-Lead-Automation-Software",
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=800&q=80",
   },
   {
@@ -110,7 +110,7 @@ export const experience = [
 export const education = [
   {
     degree: "Bachelor of Technology (B.Tech)",
-    school: "Parul University",
+    school: "Parul University, Vadodara, Gujarat",
     period: "2023 – Present",
     detail: "Learning software development, databases, and AI.",
   },
@@ -123,21 +123,12 @@ export const education = [
 ]
 
 export const certifications = [
-  { name: "Gemini Certified Student", issuer: "Google for Education", link: "/certificates/gemini.jpg" },
-  { name: "Generative AI: Prompt Engineering Basics", issuer: "Coursera (IBM)", link: "/certificates/prompt-eng.jpg" },
+  { name: "App Development Internship", issuer: "CodeAlpha", link: "/certificates/internship.png" },
   { name: "AWS Cloud Technical Essentials", issuer: "Coursera (Amazon Web Services)", link: "/certificates/AWS.jpg" },
-  { name: "AWS Students Community Day", issuer: "AWS Cloud Club Parul University", link: "/certificates/aws_community.png" },
-  { name: "Introduction to Web Development with HTML, CSS, JavaScript", issuer: "Coursera (IBM)", link: "/certificates/IBM-WEB-Development.jpg" },
-  { name: "Introduction to HTML, CSS, & JavaScript", issuer: "Coursera (IBM)", link: "/certificates/IBM introduction html,css,js.jpg" },
-  { name: "Blockchain Bootcamp", issuer: "IDS Inc (Bharat Blockchain Network)", link: "/certificates/Block Chain bootcamp.png" },
   { name: "Java Course - Mastering the Fundamentals", issuer: "Scaler Topics", link: "/certificates/java.png" },
-  { name: "C Tutorial Module", issuer: "Scaler Topics", link: "/certificates/C language.png" },
   { name: "SQL v/s NoSQL Course", issuer: "Scaler Topics", link: "/certificates/SQL.png" },
   { name: "Computer Networks And Internet Protocol", issuer: "NPTEL (IIT Kharagpur)", link: "/certificates/NPTEL.png" },
-  { name: "App Development Internship", issuer: "CodeAlpha", link: "/certificates/internship.png" },
-  { name: "Vadodara Hackathon 6.0 (Participation Certificate)", issuer: "Parul University", link: "/certificates/hackathon.png" },
-  { name: "AI Tools Workshop", issuer: "be10X", link: "/certificates/workshop.png" },
-  { name: "Masterclass on Building Smart Prompt Packs", issuer: "TechNest Intern", link: "/certificates/TechNest Ai webinar.jpg" },
+  { name: "Gemini Certified Student", issuer: "Google for Education", link: "/certificates/gemini.jpg" },
 ]
 
 export const codingProfiles = [

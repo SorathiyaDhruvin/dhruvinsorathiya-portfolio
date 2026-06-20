@@ -49,13 +49,13 @@ export default function Contact() {
           <div className="mt-8 space-y-4">
             {contactItems.map(({ icon: Icon, label, value, href }) => {
               const inner = (
-                <div className="glass flex items-center gap-4 rounded-xl p-4 transition-all hover:border-ice/50 hover:shadow-glow">
-                  <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-ice/10 text-ice">
+                <div className="glass group flex items-center gap-4 rounded-xl p-4 transition-all hover:-translate-y-1 hover:border-ice/50 hover:shadow-glow">
+                  <span className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-ice/10 text-ice transition-colors group-hover:bg-ice group-hover:text-navy">
                     <Icon size={20} />
                   </span>
                   <div>
                     <p className="text-xs uppercase tracking-wide text-ink-muted">{label}</p>
-                    <p className="font-medium text-ink">{value}</p>
+                    <p className="font-medium text-ink transition-colors group-hover:text-ice">{value}</p>
                   </div>
                 </div>
               )

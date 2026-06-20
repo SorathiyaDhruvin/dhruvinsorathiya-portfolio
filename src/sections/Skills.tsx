@@ -39,19 +39,17 @@ export default function Skills() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
             transition={{ duration: 0.35 }}
-            className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+            className="mt-10 flex flex-wrap gap-4 justify-center"
           >
             {group.items.map((skill) => {
               const { Icon, color } = skillIcons[skill] ?? fallbackSkillIcon
               return (
                 <div
                   key={skill}
-                  className="glass group flex flex-col items-center gap-3 rounded-xl p-5 text-center transition-all hover:-translate-y-1 hover:border-ice/50 hover:shadow-glow"
+                  className="glass group flex flex-col items-center justify-center gap-3 rounded-xl w-32 sm:w-36 h-32 sm:h-36 transition-all hover:-translate-y-1 hover:border-ice/50 hover:shadow-glow"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-ice/10 transition-transform group-hover:scale-110">
-                    <Icon size={32} color={color} aria-hidden />
-                  </span>
-                  <span className="text-sm font-medium text-ink">{skill}</span>
+                  <Icon size={36} color={color} className="flex-shrink-0 transition-transform group-hover:scale-110" aria-hidden />
+                  <span className="text-sm font-medium text-ink mt-1">{skill}</span>
                 </div>
               )
             })}
