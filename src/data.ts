@@ -43,7 +43,7 @@ export const interests = ["AI/ML", "Full Stack", "AR/VR", "Android", "DSA", "Ope
 export const whatIDo = [
   "Full-stack web apps with React.js, Node.js, MongoDB",
   "AI-powered tools using OpenAI API",
-  "AR/VR experiences with Unity and 360° tech",
+  "Working on 360 indoor campus navigation",
   "Android apps with Kotlin",
 ]
 
@@ -64,7 +64,7 @@ export const projects = [
     tags: ["Web", "Full Stack", "Portfolio"],
     live: "https://indoor-campus-navigation.vercel.app/",
     repo: "https://github.com/SorathiyaDhruvin/test",
-    image: "dist/Indoor-Campus-Navigation.png",
+    image: "dist/Indoor Campus Navigation.png",
   },
   {
     title: "AI Lead Automation Software",
