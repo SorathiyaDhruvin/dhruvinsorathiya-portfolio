@@ -64,7 +64,7 @@ export const projects = [
     tags: ["Web", "Full Stack", "Portfolio"],
     live: "https://indoor-campus-navigation.vercel.app/",
     repo: "https://github.com/SorathiyaDhruvin/test",
-    image: "dist/Indoor Campus Navigation.png",
+    image: "dist/Indoor-Campus-Navigation.png",
   },
   {
     title: "AI Lead Automation Software",
