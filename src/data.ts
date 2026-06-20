@@ -75,7 +75,7 @@ export const projects = [
     tags: ["Web App", "Full Stack", "AI", "SaaS"],
     live: "https://AI-Lead-Automation-Software.replit.app",
     repo: "https://github.com/SorathiyaDhruvin/AI-Lead-Automation-Software",
-    image: "dist/Ai lead Automation Software.png",
+    image: "dist/Ai-lead-Automation-Software.png",
   },
   {
     title: "Quiz Android App",
