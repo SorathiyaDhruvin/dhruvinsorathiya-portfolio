@@ -64,7 +64,9 @@ export const projects = [
     tags: ["Web", "Full Stack"],
     live: "https://indoor-campus-navigation.vercel.app/",
     repo: "https://github.com/SorathiyaDhruvin/Indoor-Campus-Navigation",
+
     image: "/Indoor Campus Navigation.png",
+
   },
   {
     title: "AI Lead Automation Software",
@@ -75,7 +77,10 @@ export const projects = [
     tags: ["Web App", "Full Stack", "AI", "SaaS"],
     live: "https://AI-Lead-Automation-Software.replit.app",
     repo: "https://github.com/SorathiyaDhruvin/AI-Lead-Automation-Software",
+
     image: "/AI Lead Automation Software.png",
+
+
   },
   {
     title: "Quiz Android App",
