@@ -43,7 +43,7 @@ export const interests = ["AI/ML", "Full Stack", "AR/VR", "Android", "DSA", "Ope
 export const whatIDo = [
   "Full-stack web apps with React.js, Node.js, MongoDB",
   "AI-powered tools using OpenAI API",
-  "AR/VR experiences with Unity and 360° tech",
+  "Working on 360 indoor campus navigation",
   "Android apps with Kotlin",
 ]
 
